@@ -14,13 +14,16 @@
 
     const noImg = []
     renderStartBtn()
+
     function renderStartBtn() {
         const startBtn = document.createElement('button')
-        startBtn.classList.add('btn', 'btn-default')
-
-        startBtn.innerText = 'Товар без фото'
-        document.getElementsByTagName('body')[0].prepend(startBtn)
-        startBtn.onclick = () => {
+        startBtn.classList.add('btn', 'btn-default', 'opener')
+        startBtn.style.top = '-100px'
+        startBtn.innerText = 'Find'
+        //document.getElementsByTagName('body')[0].prepend(startBtn)
+        document.querySelector('.basket .wrap').prepend(startBtn)
+        startBtn.onclick = (e) => {
+            e.stopPropagation()
             findNoImgItems().then( () => renderNoImgItems())
 
         }
